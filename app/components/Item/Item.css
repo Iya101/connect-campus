@@ -1,0 +1,36 @@
+.item {
+    background-color: #fff; /* White background for the item */
+    border: 2px solid #000; /* Black border */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .itemTitle {
+    color: #000; /* Black text for the title */
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .itemDescription {
+    color: #333; /* Slightly lighter black for the description */
+    font-size: 16px;
+  }
+  
+  .itemButton {
+    background-color: #d10000; /* Red background for the button */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .itemButton:hover {
+    background-color: #a80000; /* Darker shade of red on hover */
+  }
+  
