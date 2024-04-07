@@ -41,7 +41,7 @@ const AddItem = ({ onAdd, onClose, user }) => {
         <div className="add-item">
             <div className="add-item-content">
                 {/* Implement the close button with the onClick event listener calling the onClose function */}
-                <span className="close-button" onClick={onClose}>X</span>
+                <span className="close-button" onClick={onClose()}>X</span>
                 <h2>Add New Post</h2>
                 <form onSubmit={handleSubmit}>
                     <input
