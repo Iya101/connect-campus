@@ -11,7 +11,7 @@ const AddItem = ({ onAdd, user }) => {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setPostData(prevState => ({
+        setPostData (prevState => ({
             ...prevState,
             [id]: value
         }));
