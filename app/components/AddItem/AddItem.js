@@ -1,16 +1,17 @@
-"use client";
+'use client';
+
 import React, { useState } from 'react';
 import './AddItem.css';
 
-const AddItem = ({ onAdd, onClose, user }) => {
-    const [post, setPost] = useState({
+const AddItem = ({ onAdd, user }) => {
+    const [postData, setPostData] = useState({
         title: '',
         content: ''
     });
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setPost(prevState => ({
+        setPostData(prevState => ({
             ...prevState,
             [id]: value
         }));
@@ -20,43 +21,43 @@ const AddItem = ({ onAdd, onClose, user }) => {
         e.preventDefault();
 
         // Check if the user is signed in
-        if (!user) {
-            alert('Please sign in to post!');
-            return;
-        }
+        // if (!user) {
+        //     alert('Please sign in to post!');
+        //     return;
+        // }
 
         // Validate input fields
-        if (!post.title.trim() || !post.content.trim()) {
+        if (!postData.title.trim() || !postData.content.trim()) {
             alert('Please ensure that all fields are filled.');
             return;
         }
 
         // Call the onAdd function to add to the new post
-        onAdd({ title, content });
+        onAdd({ postData });
 
         //Clear input fields
-        setTitle('');
-        setContent('');
+        setPostData({
+            title: '',
+            content: ''
+        });
 
-        // Close the pop-up window
-        onClose();
     };
 
     return (
         <div className="add-item">
             <div className="add-item-content">
-                <span className="close-button" onClick={onClose}>X</span>
+                {/* <span className="close-button" onClick={onClose}>X</span> */}
                 <h2>Add New Post</h2>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
                         placeholder="Title"
-                        value={post.title}
+                        value={postData.title}
                         onChange={handleChange}
                     />
                     <textarea
                         placeholder="Write your post here!"
-                        value={post.content}
+                        value={postData.content}
                         onChange={handleChange}
                     ></textarea>
                     <button type="submit">Post</button> 
@@ -65,6 +66,6 @@ const AddItem = ({ onAdd, onClose, user }) => {
         </div>
     );
 
-}
+};
 
 export default AddItem;
