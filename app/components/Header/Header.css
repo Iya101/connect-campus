@@ -20,4 +20,10 @@
     color: white;
     text-decoration: none;
   }
+
+  .home-link {
+    text-decoration: none;
+    color: inherit; /* Keeps the original text color */
+  }
+  
   

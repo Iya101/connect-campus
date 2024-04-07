@@ -6,11 +6,13 @@ import './Header.css'; // Import your global CSS file directly
 function Header() {
   return (
     <header className="header">
-      <h1>Campus Connect</h1>
+      <Link to="/" className="home-link">
+        <h1>Campus Connect</h1>
+      </Link>
       <nav>
         <ul className="nav-links">
           <li>
-          <Link to="/auth">Login / Signup</Link>
+            <Link to="/auth">Login / Signup</Link>
           </li>
         </ul>
       </nav>
@@ -19,3 +21,4 @@ function Header() {
 }
 
 export default Header;
+
