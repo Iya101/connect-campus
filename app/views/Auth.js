@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Auth.css'; // Import the CSS file
 
 function Auth() {
     const [isLogin, setIsLogin] = useState(true);
@@ -21,9 +22,9 @@ function Auth() {
     };
 
     return (
-        <div>
+        <div className="auth-container">
             <h2>{isLogin ? 'Login' : 'Signup'}</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="auth-form">
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input 
@@ -46,7 +47,7 @@ function Auth() {
                 </div>
                 <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
             </form>
-            <button onClick={toggleAuthMode}>
+            <button onClick={toggleAuthMode} className="auth-toggle-button">
                 {isLogin ? 'Create an account' : 'Back to login'}
             </button>
         </div>
@@ -54,3 +55,4 @@ function Auth() {
 }
 
 export default Auth;
+
