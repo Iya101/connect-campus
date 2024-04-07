@@ -1,25 +1,24 @@
-// Import React and any other libraries you might need
+"use client";
 import React from 'react';
-// Import the CSS file for styling
-import './Header.css';
+import { Link } from 'react-router-dom';
+import './Header.css'; // Import your global CSS file directly
 
-import Link from 'next/link';
-import styles from './Header.module.css';
-
-// Define the Header component
 function Header() {
   return (
     <header className="header">
       <h1>Campus Connect</h1>
       <nav>
         <ul className="nav-links">
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Signup</a></li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">Signup</Link>
+          </li>
         </ul>
       </nav>
     </header>
   );
 }
 
-// Export the Header component
 export default Header;
