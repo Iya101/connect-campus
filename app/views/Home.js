@@ -3,47 +3,31 @@ import AddItem from '../components/AddItem/AddItem';
 import ItemList from '../components/ItemList/ItemList';
 
 const Home = () => {
-  const [user, setUser] = useState(null); // User state to store login status
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [posts, setPost] = useState([]);
+  const [user, setUser] = useState(null); // Assuming this is for future use
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Assuming this is for future use
+  const [posts, setPosts] = useState([]);
+  const [showAddItem, setShowAddItem] = useState(false); // Controls visibility of AddItem
 
   const onAddHandler = (postData) => {
-    setPost((prevPost) => [...prevPost, postData]);
+    // Assuming postData already contains { title: '', content: '' }
+    setPosts((prevPosts) => [...prevPosts, postData]);
+  };
+
+  const onCloseHandler = () => {
+    setShowAddItem(false); // Hides the AddItem component
+  };
+
+  const toggleAddItem = () => {
+    setShowAddItem((prevState) => !prevState); // Toggles visibility
   };
 
   return (
     <div>
-      <AddItem onAdd={onAddHandler} user={user} />
+      {isLoggedIn && <button onClick={toggleAddItem}>Add New Post</button>}
+      {showAddItem && <AddItem onAdd={onAddHandler} onClose={onCloseHandler} user={user} />}
       <ItemList posts={posts} />
-    </div>  
+    </div>
   );
-}
+};
 
 export default Home;
-
-
-// import React, { useState } from 'react';
-// import AddItem from './AddItem/AddItem';
-
-// function Home() {
-//   const [posts, setPosts] = useState([]);
-//   const [showAddItem, setShowAddItem] = useState(false);
-//   const [user, setUser] = useState(null);
-
-//   const addPostHandler = ()
-
-//   const handleSubmit = (event) => {
-//       event.preventDefault(); // Prevent the default form submission behavior
-//       console.log('Logging in with:', email, password);
-//       // Here you would typically handle the login logic, 
-//       // e.g., sending a request to your backend
-//   };
-
-//   return (
-//   }
-// }
-
-//   export default function Home() {
-//     return <div>Home Page</div>;
-//   }
-// }
