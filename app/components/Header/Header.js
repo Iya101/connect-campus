@@ -10,10 +10,7 @@ function Header() {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
+          <Link to="/auth">Login / Signup</Link>
           </li>
         </ul>
       </nav>
