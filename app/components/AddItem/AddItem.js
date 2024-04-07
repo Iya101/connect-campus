@@ -10,7 +10,6 @@ const AddItem = ({ onAdd /*, user*/ }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPostData(prevState => ({
->>>>>>> 8a2ceab343db12f9b22a5d86aa0dca8da4fd807f
             ...prevState,
             [name]: value
         }));
