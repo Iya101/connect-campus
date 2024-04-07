@@ -1,20 +1,40 @@
-/* ItemList.css */
+/* General styling for the container of the post list */
 .posts {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items vertically */
-    margin: 20px 0;
-  }
-  
-  .posts ul {
-    list-style: none; /* Remove default list styling */
-    padding: 0; /* Remove default padding */
-  }
-  
-  /* Assuming each Item component is wrapped in a <li>, though your Item component might need adjusting to include <li> */
-  .posts li {
-    margin-bottom: 15px; /* Space out each item */
-  }
-  
-  /* Add more specific styles as needed, considering the styles already applied to individual Item components. */
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Full width of the container */
+  max-width: 600px; /* Max width to avoid overly wide posts */
+  margin: 0 auto; /* Center the posts container on the page */
+  padding: 0 20px; /* Padding on the sides for some breathing room */
+}
+
+/* Styling for the list itself */
+.posts ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  width: 100%; /* Ensure the list takes up the full width of its container */
+}
+
+/* Styling for each post */
+.posts li {
+  background-color: #fff; /* White background for each post */
+  border: 1px solid #d10000; /* Red border for a touch of theme color */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  margin: 20px 0; /* Spacing between posts */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.2s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Hover effect to slightly lift the post */
+.posts li:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for the content within each post for padding */
+.posts li > div {
+  padding: 20px; /* Padding inside each post for spacing around content */
+}
+
+/* Additional styles can be added as needed for the individual components within each post,
+   such as titles, descriptions, and buttons, to further align with the theme and enhance readability. */
