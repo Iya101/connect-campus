@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Import your global CSS file directly
 
-function Header() {
+function Header({ isLoggedIn }) {
   return (
     <header className="header">
       <Link to="/" className="home-link">
@@ -12,7 +12,11 @@ function Header() {
       <nav>
         <ul className="nav-links">
           <li>
-            <Link to="/auth">Login / Signup</Link>
+            {isLoggedIn ? (
+              <Link to="/logout">Logout</Link>
+            ) : (
+              <Link to="/auth">Login / Signup</Link>
+            )}
           </li>
         </ul>
       </nav>
