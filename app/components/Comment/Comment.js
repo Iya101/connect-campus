@@ -1,6 +1,6 @@
-// Comment.js
+
 import React from 'react';
-import './Comment.css'; // Add your CSS file for styling
+import './Comment.css'; 
 
 const Comment = ({ username, content }) => {
     return (

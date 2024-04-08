@@ -28,7 +28,7 @@ const Item = props => {
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">
-                        <span className="comment-username">{comment.username}:</span>
+                        <span className="comment-username">{comment.username}: </span>
                         <span className="comment-content">{comment.content}</span>
                     </div>
                 ))}
