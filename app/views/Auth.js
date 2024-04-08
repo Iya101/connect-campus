@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import './Auth.css'; // Import the CSS file
 
-function Auth() {
+function Auth({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (isLogin) {
-            console.log('Logging in with:', email, password);
-            // Handle login logic here
-        } else {
-            console.log('Signing up with:', email, password);
-            // Handle signup logic here
-        }
-    };
+const handleSubmit = (event) => {
+    event.preventDefault();
+    // Your login logic here
+    onLogin(); // Call the onLogin function passed as a prop
+};
 
     const toggleAuthMode = () => {
         setIsLogin(!isLogin);

@@ -1,22 +1,29 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import Header from './components/Header/Header.js';
-import Home from './views/Home.js'; // Your home component
-import Auth from './views/Auth.js'; // Your authentication component
+import Home from './views/Home.js';
+import Auth from './views/Auth.js';
 import AddItem from './components/AddItem/AddItem.js';
 
 function App() {
-  const isLoggedIn = true; // Simulate login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <Router>
       <div>
-        <Header isLoggedIn={isLoggedIn} /> {/* Pass isLoggedIn as a prop */}
+        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
           {isLoggedIn && (
             <>
               <Route path="/add-item" element={<AddItem />} />
@@ -29,5 +36,5 @@ function App() {
   );
 }
 
-
 export default App;
+

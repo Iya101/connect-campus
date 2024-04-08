@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; // Import your global CSS file directly
+import './Header.css';
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, onLogout }) {
   return (
     <header className="header">
       <Link to="/" className="home-link">
@@ -13,7 +13,8 @@ function Header({ isLoggedIn }) {
         <ul className="nav-links">
           <li>
             {isLoggedIn ? (
-              <Link to="/logout">Logout</Link>
+              // Use a button or an anchor tag for logout to prevent navigation
+              <button onClick={onLogout}>Logout</button>
             ) : (
               <Link to="/auth">Login / Signup</Link>
             )}
