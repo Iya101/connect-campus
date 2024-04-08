@@ -38,6 +38,7 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Assuming this is for future use
   const [posts, setPosts] = useState(dummyPosts); // Set initial posts to dummy data
   const [showAddItem, setShowAddItem] = useState(false); // Controls visibility of AddItem
+  const [isHovered, setIsHovered] = useState(false);
 
   const onAddHandler = (postData) => {
     const newPost = {
@@ -56,10 +57,30 @@ const Home = () => {
   const toggleAddItem = () => {
     setShowAddItem((prevState) => !prevState); // Toggles visibility
   };
-
+  
+  const buttonStyle = {
+    padding: '10px 20px',
+    fontSize: '16px',
+    margin: '20px auto 0',
+    display: 'block',
+    border: '2px solid red',
+    borderRadius: '8px',
+    backgroundColor: isHovered ? '#cc0000' : '#ff0000',
+    color: 'white',
+    transition: 'background-color 0.3s'
+  };
   return (
     <div>
-      {isLoggedIn && <button onClick={toggleAddItem}>Add New Post</button>}
+      {isLoggedIn && (
+        <button
+          onClick={toggleAddItem}
+          style={buttonStyle}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Add New Post
+        </button>
+      )}
       {showAddItem && <AddItem onAdd={onAddHandler} onClose={onCloseHandler} user={user} />}
       <ItemList posts={posts} />
     </div>
