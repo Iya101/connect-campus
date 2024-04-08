@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import './Auth.css'; 
+import { useNavigate } from 'react-router-dom';
+import './Auth.css';
 
 function Auth({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    onLogin(); // Call the onLogin function passed as a prop
-};
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onLogin(); // Call the onLogin function passed as a prop
+        navigate('/'); // Redirect to the home page
+    };
 
     const toggleAuthMode = () => {
         setIsLogin(!isLogin);
@@ -50,4 +52,5 @@ const handleSubmit = (event) => {
 }
 
 export default Auth;
+
 
