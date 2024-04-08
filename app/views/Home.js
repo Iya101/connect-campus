@@ -33,9 +33,9 @@ const dummyPosts = [
 ];
 
 
-const Home = () => {
+const Home = ({ isLoggedIn }) => {
   const [user, setUser] = useState(null); 
-  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [posts, setPosts] = useState(dummyPosts); 
   const [showAddItem, setShowAddItem] = useState(false); // Controls visibility of AddItem
   const [isHovered, setIsHovered] = useState(false);
