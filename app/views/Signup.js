@@ -1,14 +1,17 @@
 "use client";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
         console.log('Signing up with:', email, password);
        
+        navigate('/');
     };
 
     return (
