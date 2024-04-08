@@ -10,7 +10,7 @@ const dummyPosts = [
       title: 'CS Elective Course Recommendations',
       content: 'I need 1 more elective. Does anyone have any recommendations for easy CSCI 4000 level electives?',
       tags: ['tag1', 'tag2'],
-      comments: [] // Add an empty array for comments
+      comments: [] 
   },
   {
       id: 2,
@@ -34,9 +34,9 @@ const dummyPosts = [
 
 
 const Home = () => {
-  const [user, setUser] = useState(null); // Assuming this is for future use
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Assuming this is for future use
-  const [posts, setPosts] = useState(dummyPosts); // Set initial posts to dummy data
+  const [user, setUser] = useState(null); 
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
+  const [posts, setPosts] = useState(dummyPosts); 
   const [showAddItem, setShowAddItem] = useState(false); // Controls visibility of AddItem
   const [isHovered, setIsHovered] = useState(false);
 

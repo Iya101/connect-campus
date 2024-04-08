@@ -1,11 +1,11 @@
 /* Style for the list item representing a user post */
 .user-post {
-    background-color: #fff; /* White background for the post */
-    border: 2px solid #000; /* Black border */
+    background-color: #fff; 
+    border: 2px solid #000; 
     border-radius: 8px;
     padding: 20px;
     margin: 15px 0;
-    list-style: none; /* Remove default list styling */
+    list-style: none; 
   }
   
   /* Style for the user info section */
@@ -17,22 +17,22 @@
   
   /* Style for the user avatar image */
   .user-avatar {
-    width: 50px; /* Example size, adjust as needed */
-    height: 50px; /* Example size, maintain aspect ratio */
-    border-radius: 50%; /* Make the image round */
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
     margin-right: 15px;
   }
   
   /* Style for the username */
   .username {
-    color: #d10000; /* Red color for the username */
+    color: #d10000; 
     font-weight: bold;
     margin-bottom: 15px;
   }
   
   /* Style for the post title */
   .post-title {
-    color: #000; /* Black text for the title */
+    color: #000; 
     font-size: 20px;
     margin-bottom: 10px;
   }

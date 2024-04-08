@@ -8,11 +8,11 @@ const Item = props => {
     const handleCommentChange = (event) => {
         setComment(event.target.value);
     };
-
+    /**Change the code here to get the actual user name */
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         if (comment.trim()) {
-            setComments([...comments, { username: 'CurrentUsername', content: comment }]);
+            setComments([...comments, { username: 'Kuromi', content: comment }]);
             setComment('');
         }
     };
@@ -28,7 +28,7 @@ const Item = props => {
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">
-                        <span className="comment-username">{comment.username}:</span>
+                        <span className="comment-username">{comment.username}: </span>
                         <span className="comment-content">{comment.content}</span>
                     </div>
                 ))}

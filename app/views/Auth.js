@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Auth.css'; // Import the CSS file
+import './Auth.css'; 
 
 function Auth({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
@@ -8,7 +8,7 @@ function Auth({ onLogin }) {
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    // Your login logic here
+    
     onLogin(); // Call the onLogin function passed as a prop
 };
 
