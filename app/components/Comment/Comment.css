@@ -13,13 +13,10 @@
 
 .comment-form {
     display: flex;
+    margin-top: 10px;
 }
 
 .comment-input {
     flex-grow: 1;
     margin-right: 10px;
-}
-
-.comment-submit {
-    /* Add styles for the submit button */
 }
