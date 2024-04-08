@@ -1,6 +1,7 @@
 // app/views/Login.js
 "use client";
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
         console.log('Logging in with:', email, password);
+
         // Here you would typically handle the login logic, 
         // e.g., sending a request to your backend
     };

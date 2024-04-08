@@ -36,7 +36,7 @@ function Signup() {
                         required 
                     />
                 </div>
-                <button type="submit">Signup</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
     );
