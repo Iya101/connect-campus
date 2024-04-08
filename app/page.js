@@ -22,7 +22,7 @@ function App() {
       <div>
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
           <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
           {isLoggedIn && (
             <>
