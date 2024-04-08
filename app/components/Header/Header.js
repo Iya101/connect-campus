@@ -1,9 +1,16 @@
 "use client";
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header({ isLoggedIn, onLogout }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout();
+    navigate('/');
+  };
+
   return (
     <header className="header">
       <Link to="/" className="home-link">
@@ -13,8 +20,7 @@ function Header({ isLoggedIn, onLogout }) {
         <ul className="nav-links">
           <li>
             {isLoggedIn ? (
-              
-              <button onClick={onLogout}>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
             ) : (
               <Link to="/auth">Login / Signup</Link>
             )}
@@ -26,4 +32,5 @@ function Header({ isLoggedIn, onLogout }) {
 }
 
 export default Header;
+
 
