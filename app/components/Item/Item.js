@@ -17,11 +17,18 @@ const Item = props => {
         }
     };
 
+    const defaultAvatar = 'https://i.pinimg.com/736x/d7/23/0a/d7230a1182cd6224fc680eed55cc77c8.jpg';
+      
+
     return (
         <li key={props.id} className="user-post">
             <div className="user-info">
                 <span className="username">{props.username}</span>
-                <img src={props.avatar} alt="User Avatar" className="user-avatar" />
+                <img 
+                    src={props.avatar || defaultAvatar} 
+                    alt="User Avatar" 
+                    className="user-avatar" 
+                />
             </div>
             <h2 className="post-title">{props.title}</h2>
             <p className="post-content">{props.content}</p>

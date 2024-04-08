@@ -1,11 +1,12 @@
 // app/views/Login.js
 "use client";
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -13,6 +14,7 @@ function Login() {
 
         // Here you would typically handle the login logic, 
         // e.g., sending a request to your backend
+        navigate('/');
     };
 
     return (
