@@ -1,0 +1,25 @@
+.comments-section {
+    margin-top: 20px;
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+
+.comment-username {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.comment-form {
+    display: flex;
+}
+
+.comment-input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.comment-submit {
+    /* Add styles for the submit button */
+}

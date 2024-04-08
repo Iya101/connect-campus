@@ -27,6 +27,7 @@
   .username {
     color: #d10000; /* Red color for the username */
     font-weight: bold;
+    margin-bottom: 15px;
   }
   
   /* Style for the post title */
