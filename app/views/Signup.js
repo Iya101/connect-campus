@@ -8,8 +8,7 @@ function Signup() {
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
         console.log('Signing up with:', email, password);
-        // Here you would typically handle the signup logic,
-        // e.g., sending a request to your backend to create a new user
+       
     };
 
     return (

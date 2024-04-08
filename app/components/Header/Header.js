@@ -13,7 +13,7 @@ function Header({ isLoggedIn, onLogout }) {
         <ul className="nav-links">
           <li>
             {isLoggedIn ? (
-              // Use a button or an anchor tag for logout to prevent navigation
+              
               <button onClick={onLogout}>Logout</button>
             ) : (
               <Link to="/auth">Login / Signup</Link>
