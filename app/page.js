@@ -5,6 +5,7 @@ import Header from './components/Header/Header.js';
 import Home from './views/Home.js';
 import Auth from './views/Auth.js';
 import AddItem from './components/AddItem/AddItem.js';
+import Head from 'next/head.js';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,9 @@ function App() {
     </Router>
   );
 }
+<Head>
+<link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
 
+</Head>
 export default App;
 
