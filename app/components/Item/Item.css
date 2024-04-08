@@ -42,4 +42,17 @@
     color: #333; /* Slightly lighter black for the content */
     font-size: 16px;
   }
+  .comment-submit {
+    margin-left: 10px; /* Adds spacing to the left */
+    background-color: #ff0000; /* Example initial background color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for the background color */
+  }
   
+  .comment-submit:hover {
+    background-color: #cc0000; /* Darker shade on hover */
+  }
