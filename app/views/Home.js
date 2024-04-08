@@ -14,19 +14,19 @@ const dummyPosts = [
   },
   {
       id: 2,
-      avatar: '/path/to/avatar2.jpg',
-      username: 'User2',
-      title: 'Post Title 2',
-      content: 'Post content 2',
+      avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712594491/avatar2_lvpwlu.webp',
+      username: 'example_username',
+      title: 'Best CS Clubs',
+      content: 'What are the best CS clubs to join for networking experience?',
       tags: ['tag2', 'tag3'],
       comments: []
   },
   {
       id: 3,
-      avatar: '/path/to/avatar3.jpg',
+      avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712594708/avatar3_yveogm.webp',
       username: 'User3',
-      title: 'Post Title 3',
-      content: 'Post content 3',
+      title: 'MIS or CS',
+      content: 'I am currently a freshman studying MIS and idk if I should stick with MIS or switch to CS. Any advice?',
       tags: ['tag1', 'tag3'],
       comments: []
   },
