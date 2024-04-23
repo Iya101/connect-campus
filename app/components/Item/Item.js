@@ -4,6 +4,7 @@ import './Item.css'; // Ensure you have CSS for styling
 const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
     const [comment, setComment] = useState('');
     const [comments, setComments] = useState([]);
+    const [avatarUrl, setAvatarUrl] = useState(avatar);
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
@@ -13,18 +14,26 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
         event.preventDefault();
         if (comment.trim()) {
             const newComment = { username: 'Logged-in User', content: comment }; // Replace 'Logged-in User' with actual user data if available
-            setComments((prevComments) => [...prevComments, newComment]);
+            setComments(prevComments => [...prevComments, newComment]);
             setComment('');
         }
     };
 
     const defaultAvatar = 'https://res.cloudinary.com/degakxo0q/image/upload/v1713913695/d7230a1182cd6224fc680eed55cc77c8_kchop5.jpg';
       
+    const handleAvatarError = () => {
+        setAvatarUrl(defaultAvatar);
+    };
 
     return (
         <li className="user-post">
             <div className="user-info">
-                <img src={avatar} alt="User Avatar" className="user-avatar" />
+                <img 
+                    src={avatarUrl} 
+                    onError={handleAvatarError} 
+                    alt="User Avatar" 
+                    className="user-avatar" 
+                />
                 <span className="username">{username}</span>
             </div>
             <h2 className="post-title">{title}</h2>
@@ -56,5 +65,3 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
 };
 
 export default Item;
-
-
