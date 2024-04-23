@@ -15,7 +15,7 @@ const dummyPosts = [
   {
     id: 2,
     avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712594491/avatar2_lvpwlu.webp',
-    username: 'example_username',
+    username: 'example_user',
     title: 'Best CS Clubs',
     content: 'What are the best CS clubs to join for networking experience?',
     tags: ['tag2', 'tag3'],
@@ -24,7 +24,7 @@ const dummyPosts = [
   {
     id: 3,
     avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712594708/avatar3_yveogm.webp',
-    username: 'User3',
+    username: 'other_user',
     title: 'MIS or CS',
     content: 'I am currently a freshman studying MIS and idk if I should stick with MIS or switch to CS. Any advice?',
     tags: ['tag1', 'tag3'],
