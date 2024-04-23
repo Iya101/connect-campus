@@ -1,24 +1,23 @@
 import React from 'react';
 import Item from '../Item/Item';
-import './ItemList.css';
 
-const ItemList = ({ posts }) => {
+const ItemList = ({ posts, isLoggedIn }) => {
     return (
-        <div className="posts">
-            <ul>
-                {posts.map(post => (
-                    <Item
-                        key={post.id}
-                        id={post.id}
-                        avatar={post.avatar}
-                        name={post.username}
-                        title={post.title}
-                        content={post.content}
-                    />
-                ))}
-            </ul>
-        </div>
+        <ul className="posts">
+            {posts.map((post) => (
+                <Item
+                    key={post.id}
+                    id={post.id}
+                    avatar={post.avatar}
+                    username={post.username}
+                    title={post.title}
+                    content={post.content}
+                    isLoggedIn={isLoggedIn} // Ensure this prop is passed correctly
+                />
+            ))}
+        </ul>
     );
 };
 
 export default ItemList;
+
