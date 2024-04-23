@@ -18,6 +18,9 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
         }
     };
 
+    const defaultAvatar = 'https://res.cloudinary.com/degakxo0q/image/upload/v1713913695/d7230a1182cd6224fc680eed55cc77c8_kchop5.jpg';
+      
+
     return (
         <li className="user-post">
             <div className="user-info">
