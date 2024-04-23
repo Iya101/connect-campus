@@ -57,7 +57,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
                         <button type="submit" className="comment-submit">Post</button>
                     </form>
                 ) : (
-                    <p>Please log in to comment.</p>
+                    <p className="login-prompt">Please log in to comment.</p>
                 )}
             </div>
         </li>

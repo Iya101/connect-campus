@@ -70,6 +70,13 @@
     color: black;
   }
   
-  p {
-    color: black;
-  }
+  .login-prompt {
+    color: #ff4500; /* Orangish red color for visibility */
+    font-size: 14px; /* Smaller font size */
+    margin-top: 10px; /* Spacing above the message */
+    text-align: center; /* Center-align the text */
+    padding: 8px;
+    border: 1px solid #ffa07a; /* Light salmon border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fffaf0; /* Very light off-white background */
+}
