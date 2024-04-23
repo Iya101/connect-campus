@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
-import './Item.css';
+import './Item.css'; // Ensure you have CSS for styling
 
-const Item = props => {
+const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
     const [comment, setComment] = useState('');
-    const [comments, setComments] = useState(props.comments || []);
+    const [comments, setComments] = useState([]);
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
     };
-    /**Change the code here to get the actual user name */
+
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         if (comment.trim()) {
-            setComments([...comments, { username: 'Kuromi', content: comment }]);
+            const newComment = { username: 'Logged-in User', content: comment }; // Replace 'Logged-in User' with actual user data if available
+            setComments((prevComments) => [...prevComments, newComment]);
             setComment('');
         }
     };
 
-    const defaultAvatar = 'https://i.pinimg.com/736x/d7/23/0a/d7230a1182cd6224fc680eed55cc77c8.jpg';
-      
-
     return (
-        <li key={props.id} className="user-post">
+        <li className="user-post">
             <div className="user-info">
-                <span className="username">{props.username}</span>
-                <img 
-                    src={props.avatar || defaultAvatar} 
-                    alt="User Avatar" 
-                    className="user-avatar" 
-                />
+                <img src={avatar} alt="User Avatar" className="user-avatar" />
+                <span className="username">{username}</span>
             </div>
-            <h2 className="post-title">{props.title}</h2>
-            <p className="post-content">{props.content}</p>
+            <h2 className="post-title">{title}</h2>
+            <p className="post-content">{content}</p>
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">
@@ -39,20 +33,25 @@ const Item = props => {
                         <span className="comment-content">{comment.content}</span>
                     </div>
                 ))}
-                <form onSubmit={handleCommentSubmit} className="comment-form">
-                    <input
-                        type="text"
-                        value={comment}
-                        onChange={handleCommentChange}
-                        placeholder="Add a comment..."
-                        className="comment-input"
-                    />
-                    <button type="submit" className="comment-submit">Post</button>
-                </form>
+                {isLoggedIn ? (
+                    <form onSubmit={handleCommentSubmit} className="comment-form">
+                        <input
+                            type="text"
+                            value={comment}
+                            onChange={handleCommentChange}
+                            placeholder="Add a comment..."
+                            className="comment-input"
+                        />
+                        <button type="submit" className="comment-submit">Post</button>
+                    </form>
+                ) : (
+                    <p>Please log in to comment.</p>
+                )}
             </div>
         </li>
     );
-}
+};
 
 export default Item;
+
 
