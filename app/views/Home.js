@@ -6,7 +6,7 @@ const dummyPosts = [
   {
     id: 1,
     avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712550709/avatar1_tatwp2.png',
-    username: 'eva_daniel',
+    username: 'this_user',
     title: 'CS Elective Course Recommendations',
     content: 'I need 1 more elective. Does anyone have any recommendations for easy CSCI 4000 level electives?',
     tags: ['tag1', 'tag2'],
@@ -15,7 +15,7 @@ const dummyPosts = [
   {
     id: 2,
     avatar: 'https://res.cloudinary.com/dcrv4owpp/image/upload/v1712594491/avatar2_lvpwlu.webp',
-    username: 'example_user',
+    username: 'that_user',
     title: 'Best CS Clubs',
     content: 'What are the best CS clubs to join for networking experience?',
     tags: ['tag2', 'tag3'],
