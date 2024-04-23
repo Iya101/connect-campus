@@ -22,7 +22,3 @@ mongoose.connect(conn_str)
     .catch(err => {
         console.log(`Error in DB Connection ${err}`);
     });
-
-
-
-
