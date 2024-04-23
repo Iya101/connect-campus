@@ -52,6 +52,7 @@
     border: 1px solid #ccc; 
     margin-right: 10px; 
     width: calc(100% - 120px); 
+    color: black;
   }
   
   .comment-submit {
@@ -65,4 +66,10 @@
   .comment-submit:hover {
     background-color: #cc0000; 
   }
+  .comment {
+    color: black;
+  }
   
+  p {
+    color: black;
+  }
