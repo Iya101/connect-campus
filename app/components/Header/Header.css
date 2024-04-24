@@ -10,10 +10,12 @@
   color:red;
 }
 #logoutButton {
-  color:red;
+  color:white;
   background-color: #333;
   border: none;
   cursor: pointer;
+  padding: 10px 20px;
+  font-size: 18px;
 }
 .nav-links {
   list-style: none;
