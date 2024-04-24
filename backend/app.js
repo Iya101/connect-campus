@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = express.Router();
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
 app.use(cors());
 app.use(express.json()); // to parse JSON bodies
 
