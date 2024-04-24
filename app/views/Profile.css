@@ -30,6 +30,9 @@
   }
   #usernameText {
     margin-left: 10px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
   }
   #profileButton {
     background-color: #ff0000; 
