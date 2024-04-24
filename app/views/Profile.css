@@ -12,28 +12,32 @@
     display: flex;
     flex-direction: column;
   }
+
+
   
   .profile-form label {
     margin-bottom: 0.5rem;
+    padding: 10px 20px;
   }
   
   .profile-form input {
     padding: 0.8rem;
     margin-bottom: 1rem;
+    margin-left: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
+    padding: 10px 20px;
   }
-  
-  .profile-form button {
-    padding: 0.8rem;
+  #usernameText {
+    margin-left: 10px;
+  }
+  #profileButton {
+    background-color: #ff0000; 
     color: white;
-    background-color: #007BFF;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .profile-form button:hover {
-    background-color: #0056b3;
-  }
-  
+    margin-left: 10px;
+    
+}

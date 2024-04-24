@@ -34,7 +34,7 @@ function Header({ isLoggedIn, onLogout }) {
           {isLoggedIn ? (
             <>
               <li>
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleLogout} id="logoutButton">Logout</button>
               </li>
               <li>
                 <NavLink to="/profile" style={({ isActive }) => isActive ? activeStyle : undefined}>Profile</NavLink>

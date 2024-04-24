@@ -40,10 +40,11 @@ function Profile({ user, onUpdateUser }) {
             name="username"
             value={editUser.username} // Safely accessing username
             onChange={handleChange}
+            id="usernameText"
           />
         </label>
         {/* Add other fields as necessary */}
-        <button type="submit">Update Profile</button>
+        <button type="submit" id="profileButton">Update Profile</button>
       </form>
     </div>
   );

@@ -6,7 +6,15 @@
   background-color: #333;
   color: rgb(213, 27, 27);
 }
-
+#profile {
+  color:red;
+}
+#logoutButton {
+  color:red;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+}
 .nav-links {
   list-style: none;
 }
