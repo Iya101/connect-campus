@@ -1,34 +1,45 @@
-"use client";
+"use client"
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header.js';
-import Home from './views/Home.js';
-import Auth from './views/Auth.js';
-import AddItem from './components/AddItem/AddItem.js';
-import Head from 'next/head.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Home from './views/Home';
+import Auth from './views/Auth';
+import AddItem from './components/AddItem/AddItem';
+import Profile from './views/Profile';
 
 function App() {
+  // Initialize user state with a default username
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({
+    username: generateRandomUsername(10), // Function to generate a random username
+    otherInfo: {}
+  });
 
-  const handleLogin = () => {
+  const handleLogin = (userData) => {
     setIsLoggedIn(true);
+    setUser(userData); // Set user data upon login
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    setUser({
+      username: generateRandomUsername(10), // Reset username upon logout
+      otherInfo: {}     
+    });
   };
+  
 
   return (
     <Router>
       <div>
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
-          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
           {isLoggedIn && (
             <>
+              <Route path="/profile" element={<Profile user={user} onUpdateUser={setUser} />} />
               <Route path="/add-item" element={<AddItem />} />
-              <Route path="/logout" element={<Home />} />
             </>
           )}
         </Routes>
@@ -36,9 +47,17 @@ function App() {
     </Router>
   );
 }
-<Head>
-<link rel="icon" href="../public/favicon.ico" type="image/x-icon" />
 
-</Head>
+// Helper function to generate a random username
+function generateRandomUsername(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
 export default App;
+
 
