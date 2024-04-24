@@ -6,6 +6,7 @@ function Auth({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -29,6 +30,16 @@ function Auth({ onLogin }) {
                         id="email" 
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        value={username} 
+                        onChange={(e) => setUsername(e.target.value)} 
                         required 
                     />
                 </div>
