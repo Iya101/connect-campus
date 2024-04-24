@@ -1,5 +1,5 @@
 .comments-section {
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 .comment {
@@ -15,11 +15,11 @@
 
 .comment-form {
     display: flex;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 .comment-input {
     flex-grow: 1;
-    margin-right: 10px;
+    margin-right: 40px;
     color: #000;
 }
