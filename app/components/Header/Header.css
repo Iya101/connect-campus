@@ -15,7 +15,8 @@
   border: none;
   cursor: pointer;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 16px;
+  margin-right: 5px;
 }
 .nav-links {
   list-style: none;
