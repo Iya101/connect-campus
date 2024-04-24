@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Item.css'; // Ensure you have CSS for styling
+import './Item.css'; 
 
 const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
     const [comment, setComment] = useState('');

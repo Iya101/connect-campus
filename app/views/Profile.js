@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import './Profile.css';
 
 function Profile({ user, onUpdateUser }) {
   // Initialize editUser state with safeguards for undefined user properties
