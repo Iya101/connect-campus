@@ -87,9 +87,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
                         />
                         <button type="submit" className="edit-submit">Post</button>
                     </form>
-            <h2 className="post-title">{title}</h2>
-            <p className="post-content">{content}</p>
-
+            
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">
