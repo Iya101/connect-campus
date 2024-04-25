@@ -39,7 +39,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         if (comment.trim()) {
-            const newComment = { username: 'Logged-in User', content: comment }; // Replace 'Logged-in User' with actual user data if available
+            const newComment = { username: 'Default User', content: comment }; // Replace 'Logged-in User' with actual user data if available
             setComments(prevComments => [...prevComments, newComment]);
             setComment('');
         }

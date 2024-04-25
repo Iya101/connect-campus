@@ -5,7 +5,7 @@ import './Profile.css';
 function Profile({ user, onUpdateUser }) {
   // Initialize editUser state with safeguards for undefined user properties
   const [editUser, setEditUser] = useState({
-    username: user?.username || 'defaultUsername', // Defaulting to prevent undefined errors
+    username: user?.username || 'Default User', // Defaulting to prevent undefined errors
     ...user
   });
 
@@ -13,7 +13,7 @@ function Profile({ user, onUpdateUser }) {
     // Update state only if user is defined
     if (user) {
       setEditUser({
-        username: user.username || 'defaultUsername',
+        username: user.username || 'Default User',
         ...user
       });
     }
