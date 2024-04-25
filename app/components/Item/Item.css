@@ -143,14 +143,14 @@
   display: flex;
   flex-direction: row;  /* Aligns the children (buttons) horizontally */
   justify-content: space-between; /* Distributes space between the buttons */
-  margin-top: 10px; /* Space above the button container */
+   /* Space above the button container */
 }
 
 /* General styles for buttons within the container */
 .button-container button {
   cursor: pointer;
   padding: 8px 12px;
-  margin-top: 5px; /* Space between buttons */
+   /* Space between buttons */
   color: white;
   font-weight: bold;
   border: none;
