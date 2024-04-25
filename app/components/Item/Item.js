@@ -1,10 +1,36 @@
 import React, { useState } from 'react';
 import './Item.css'; 
 
-const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
+const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete }) => {
     const [comment, setComment] = useState('');
     const [comments, setComments] = useState([]);
     const [avatarUrl, setAvatarUrl] = useState(avatar);
+    const [editPost, setEditPost] = useState(null);
+    const [postTitle, setPostTitle] = useState(title);
+    const [postContent, setPostContent] = useState(content);
+
+    const handleDelete = () => {
+        onDelete(id);
+    };
+    const handleEdit = (postId) => {
+        setEditPost(postId);
+    };
+
+    const handleTitleChange = (event) => {
+        setPostTitle(event.target.value);
+    };
+
+    const handleContentChange = (event) => {
+        setPostContent(event.target.value);
+    };
+
+    const handleEditSubmit = (event) => {
+        event.preventDefault();
+
+        setPostTitle(postTitle);
+        setPostContent(postContent);
+        setEditPost(false);
+    };
 
     const handleCommentChange = (event) => {
         setComment(event.target.value);
@@ -28,6 +54,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
     return (
         <li className="user-post">
             <div className="user-info">
+                <div className="container">
                 <img 
                     src={avatarUrl} 
                     onError={handleAvatarError} 
@@ -35,9 +62,34 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
                     className="user-avatar" 
                 />
                 <span className="username">{username}</span>
+           
+                 </div>
+                {username === 'Default User' && (
+                    <div className="button-container">
+                        <button class="edit-button" onClick={() => handleEdit(id)}>Edit</button>
+                        <button class="delete-button" onClick={() => handleDelete(id)}>Delete</button>
+                    </div>
+                )}
             </div>
+            {editPost === id && username === 'Default User' ? (
+                <div>
+                    <form onSubmit={handleEditSubmit} className="edit">
+                        <input 
+                            type="text"
+                            value={postTitle}
+                            className="edit-title"
+                            onChange={handleTitleChange}
+                        />
+                        <textarea 
+                            value={postContent}
+                            className="edit-content"
+                            onChange={handleContentChange}
+                        />
+                        <button type="submit" className="edit-submit">Post</button>
+                    </form>
             <h2 className="post-title">{title}</h2>
             <p className="post-content">{content}</p>
+
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">
@@ -45,6 +97,19 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
                         <span className="comment-content">{comment.content}</span>
                     </div>
                 ))}
+            </div>
+        </div>
+            ) : (
+                <div>
+                <h2 className="post-title">{postTitle}</h2>
+                <p className="post-content">{postContent}</p>
+                <div className="comments-section">
+                    {comments.map((comment, index) => (
+                        <div key={index} className="comment">
+                            <span className="comment-username">{comment.username}: </span>
+                            <span className="comment-content">{comment.content}</span>
+                        </div>
+                    ))}
                 {isLoggedIn ? (
                     <form onSubmit={handleCommentSubmit} className="comment-form">
                         <input
@@ -59,7 +124,9 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn }) => {
                 ) : (
                     <p className="login-prompt">Please log in to comment.</p>
                 )}
+                </div>
             </div>
+            )}
         </li>
     );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddItem from '../components/AddItem/AddItem';
 import ItemList from '../components/ItemList/ItemList';
 
+
 const dummyPosts = [
   {
     id: 1,
@@ -32,7 +33,7 @@ const dummyPosts = [
   },
 ];
 
-const Home = ({ isLoggedIn }) => {
+const Home = ({ isLoggedIn, user }) => {
   const [posts, setPosts] = useState(dummyPosts); 
   const [showAddItem, setShowAddItem] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -42,12 +43,16 @@ const Home = ({ isLoggedIn }) => {
       ...postData,
       id: posts.length + 1,
       avatar: postData.avatar || 'https://default-avatar.png', // Default or use specific avatar if not provided
-      username: 'Logged-in User', // You can adjust this based on actual logged-in user info
+      username: 'Default User', // You can adjust this based on actual logged-in user info
       tags: postData.tags.split(',').map(tag => tag.trim()),
     };
     setPosts((prevPosts) => [...prevPosts, newPost]);
   };
 
+  const handleDelete = (postId) => {
+    const updatedPosts = posts.filter(post => post.id !== postId);
+    setPosts(updatedPosts);
+  };
   const toggleAddItem = () => {
     setShowAddItem((prevState) => !prevState);
   };
@@ -77,7 +82,7 @@ const Home = ({ isLoggedIn }) => {
         </button>
       )}
       {showAddItem && <AddItem onAdd={onAddHandler} onClose={() => setShowAddItem(false)} />}
-      <ItemList posts={posts} isLoggedIn={isLoggedIn} />
+      <ItemList posts={posts} isLoggedIn={isLoggedIn} user={user} onDelete={handleDelete} />
     </div>
   );
 };

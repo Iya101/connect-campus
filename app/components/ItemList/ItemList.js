@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from '../Item/Item';
 
-const ItemList = ({ posts, isLoggedIn }) => {
+const ItemList = ({ posts, isLoggedIn, user, onDelete }) => {
     return (
         <ul className="posts">
             {posts.map((post) => (
@@ -12,7 +12,9 @@ const ItemList = ({ posts, isLoggedIn }) => {
                     username={post.username}
                     title={post.title}
                     content={post.content}
-                    isLoggedIn={isLoggedIn} // Ensure this prop is passed correctly
+                    isLoggedIn={isLoggedIn}
+                    user={user} 
+                    onDelete={onDelete}// Ensure this prop is passed correctly
                 />
             ))}
         </ul>
