@@ -10,6 +10,7 @@ import Profile from './views/Profile';
 function App() {
   // Initialize user state with a default username
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
   const [user, setUser] = useState({
     username: generateRandomUsername(10), // Function to generate a random username
     otherInfo: {}
@@ -35,7 +36,7 @@ function App() {
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} user={user} />} />
-          <Route path="/auth" element={<Auth onLogin={handleLogin} />} />
+          <Route path="/auth" element={ <Auth onLogin={handleLogin} username={username} setUsername={setUsername} />} />
           {isLoggedIn && (
             <>
               <Route path="/profile" element={<Profile user={user} onUpdateUser={setUser} />} />
