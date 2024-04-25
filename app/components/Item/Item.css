@@ -54,17 +54,23 @@
 
   .button-container {
     display: flex;
-    align-items: center;
+    
     flex-direction: column;
   }
 
   .edit, .delete {
     margin-left: 10px;
   }
+
   .edit {
     display: flex;
     flex-direction: column;
-    color: black;
+    color: white;
+  }
+  .delete {
+    background-color: red;
+    border-radius: 4px;
+    color: white;
   }
 
   .edit-title, .edit-content, .edit-submit {
@@ -130,4 +136,44 @@
     border: 1px solid #ffa07a; /* Light salmon border */
     border-radius: 5px; /* Rounded corners */
     background-color: #fffaf0; /* Very light off-white background */
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: row;  /* Aligns the children (buttons) horizontally */
+  justify-content: space-between; /* Distributes space between the buttons */
+  margin-top: 10px; /* Space above the button container */
+}
+
+/* General styles for buttons within the container */
+.button-container button {
+  cursor: pointer;
+  padding: 8px 12px;
+  margin-top: 5px; /* Space between buttons */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Specific styles for the edit button */
+.edit-button {
+  background-color: red;
+  margin-left: 5px;
+  margin-right: 5px; /* Green background */
+}
+
+.edit-button:hover {
+  background-color: #d32f2f; /* Darker green on hover */
+}
+
+/* Specific styles for the delete button */
+.delete-button {
+  background-color: red /* Red background */
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }
