@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // Add useState here
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
-function Auth({ onLogin }) {
+function Auth({ onLogin, username, setUsername }) {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,6 +32,18 @@ function Auth({ onLogin }) {
                         required 
                     />
                 </div>
+                { !isLogin && (
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} 
+                            required 
+                        />
+                    </div>
+                )}
                 <div>
                     <label htmlFor="password">Password:</label>
                     <input 
@@ -52,5 +64,3 @@ function Auth({ onLogin }) {
 }
 
 export default Auth;
-
-
