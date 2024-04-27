@@ -24,12 +24,15 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
         setPostContent(event.target.value);
     };
 
-    const handleEditSubmit = (event) => {
+    const handleEditSubmit = async (event) => {
         event.preventDefault();
 
-        setPostTitle(postTitle);
-        setPostContent(postContent);
-        setEditPost(false);
+        try {
+            await axios.put('http://localhost:8082/PostRoutes/{postId}');
+            setEditPost(null);
+        } catch (err) {
+            console.error('Unable to update post.', err);
+        }
     };
 
     const handleCommentChange = (event) => {
@@ -87,7 +90,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
                         />
                         <button type="submit" className="edit-submit">Post</button>
                     </form>
-            
+
             <div className="comments-section">
                 {comments.map((comment, index) => (
                     <div key={index} className="comment">

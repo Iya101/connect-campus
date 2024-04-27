@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './AddItem.css';
+import axios from 'axios';
 
-
-
-const AddItem = ({ onAdd, onClose, user }) => {
+const AddItem = ({ onClose, user }) => { {/* removed onAdd */}
     const [postData, setPostData] = useState({
         title: '',
         content: '',
-        tags: ''
+        tags: '',
+        //user: user
     });
 
     const handleChange = (e) => {
@@ -18,7 +18,7 @@ const AddItem = ({ onAdd, onClose, user }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!postData.title.trim() || !postData.content.trim() || !postData.tags.trim()) {
@@ -26,17 +26,20 @@ const AddItem = ({ onAdd, onClose, user }) => {
             return;
         }
 
-        onAdd(postData);
-
-        setPostData({
-            title: '',
-            content: '',
-            tags: ''
-        });
-
-        onClose();
+        try {
+            const response = await axios.post('http://localhost:8082/PostRoutes', postData);
+            console.log(response.data);
+            {/* removed onAdd(postData); */}
+            setPostData({
+                title: '',
+                content: '',
+                tags: ''
+            });
+            onClose();
+        } catch (error) {
+            console.error('Unable to add posts.', error);
+        }
     };
-
     return (
         <div className="add-item">
             <div className="add-item-content">
@@ -54,4 +57,3 @@ const AddItem = ({ onAdd, onClose, user }) => {
 };
 
 export default AddItem;
-

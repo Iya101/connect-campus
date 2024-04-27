@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddItem from '../components/AddItem/AddItem';
 import ItemList from '../components/ItemList/ItemList';
-
+import axios from 'axios';
 
 const dummyPosts = [
   {
@@ -34,27 +34,39 @@ const dummyPosts = [
 ];
 
 const Home = ({ isLoggedIn, user }) => {
-  const [posts, setPosts] = useState(dummyPosts); 
+  const [posts, setPosts] = useState(dummyPosts);  // Initialize with dummy posts
   const [showAddItem, setShowAddItem] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const onAddHandler = (postData) => {
-    const newPost = {
-      ...postData,
-      id: posts.length + 1,
-      avatar: postData.avatar || 'https://default-avatar.png', // Default or use specific avatar if not provided
-      username: 'Default User', // You can adjust this based on actual logged-in user info
-      tags: postData.tags.split(',').map(tag => tag.trim()),
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:8082/PostRoutes');
+        setPosts(currentPosts => [...dummyPosts, ...response.data]);  // Combine fetched posts with dummy posts
+      } catch (err) {
+        console.error('Unable to get posts.', err);
+      }
     };
-    setPosts((prevPosts) => [...prevPosts, newPost]);
+
+    // Gets new posts every second
+    const interval = setInterval(() => {
+      getPosts();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleDelete = async (postId) => {
+    try {
+      await axios.delete(`http://localhost:8082/PostRoutes/${postId}`);
+      setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+    } catch (err) {
+      console.error('Unable to delete post.', err);
+    }
   };
 
-  const handleDelete = (postId) => {
-    const updatedPosts = posts.filter(post => post.id !== postId);
-    setPosts(updatedPosts);
-  };
   const toggleAddItem = () => {
-    setShowAddItem((prevState) => !prevState);
+    setShowAddItem(prevState => !prevState);
   };
 
   const buttonStyle = {
@@ -81,12 +93,11 @@ const Home = ({ isLoggedIn, user }) => {
           Add New Post
         </button>
       )}
-      {showAddItem && <AddItem onAdd={onAddHandler} onClose={() => setShowAddItem(false)} />}
+      {showAddItem && <AddItem onClose={() => setShowAddItem(false)} />}
       <ItemList posts={posts} isLoggedIn={isLoggedIn} user={user} onDelete={handleDelete} />
     </div>
   );
 };
 
 export default Home;
-
 
