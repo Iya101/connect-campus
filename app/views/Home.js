@@ -71,8 +71,8 @@ const Home = ({ isLoggedIn, user }) => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete('http://localhost:8082/PostRoutes/${postId}');
-      setPosts((prevPosts) => prevPosts.filter(post => post.id !== postId));
+      await axios.delete(`http://localhost:8082/PostRoutes/${postId}`);
+      setPosts((prevPosts) => prevPosts.filter(post => post._id !== postId));
     } catch (err) {
       console.error('Unable to delete post.', err);
     }
