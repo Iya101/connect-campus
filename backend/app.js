@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = express.Router();
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 app.use(cors());
 app.use(express.json()); // to parse JSON bodies
@@ -26,3 +26,6 @@ mongoose.connect(conn_str)
     });
     const posts = require('./routes/PostRoutes');
     app.use('/PostRoutes', posts);
+
+    const comments = require('./routes/CommentRoutes');
+    app.use('/CommentRoutes', comments);
