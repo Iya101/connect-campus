@@ -7,7 +7,7 @@ const UserProfile = require('../models/UserProfile');
 const router = express.Router();
 const auth = require('../middleWare/Auth');
 
-<<<<<<< HEAD
+
 // Register User
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
@@ -80,7 +80,7 @@ userRouter.post('/tokenIsValid', async (req, res) => {
 });
   
 module.exports = router;
-=======
+
 // PUT route to update a user's username
 router.put('/update-username', async (req, res) => {
   const { userId, newUsername } = req.body;
@@ -140,4 +140,4 @@ router.post('/profile', async (req, res) => {
 });
 
 module.exports = router;
->>>>>>> a42e5aab8b5c43cd7c3034443cf998bf0a840d5d
+

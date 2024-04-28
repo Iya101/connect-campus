@@ -3,15 +3,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 const router = express.Router();
-<<<<<<< HEAD
+
 const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 app.use(cors());
-=======
-const userRoutes = require('./routes/userRoutes');
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
->>>>>>> a42e5aab8b5c43cd7c3034443cf998bf0a840d5d
+
 app.use(express.json()); // to parse JSON bodies
 app.use('/api/users', userRoutes);
 app.use((req, res, next) => {
