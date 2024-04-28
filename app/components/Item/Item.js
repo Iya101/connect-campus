@@ -30,7 +30,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comm
         event.preventDefault();
 
         try {
-            await axios.put('http://localhost:8082/PostRoutes/{id}', {title: postTitle, content: postContent});
+            await axios.put(`http://localhost:8082/PostRoutes/${id}`, {title: postTitle, content: postContent});
             setEditPost(null);
         } catch (err) {
             console.error('Unable to update post.', err);
