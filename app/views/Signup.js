@@ -1,42 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contect/UserContext';
-import axios from 'axios';
-
-const Signup = () => {
-    const { serUserData } = useContext(UserContext);
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
-    });
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault(); 
-        try {
-            await axios.post('http://localhost:8082/login', {
-                email: formData.email,
-                password: formData.password
-            });
-       setUserData({
-        token:loginRes.data.token,
-        user: loginRe.data.user,
-       });
-       localStorage.setItem("auth-token", loginRes.data.token);
-       router.push('/'); // need to add the hompage to dis
-    } catch (error) {
-        console.error('Signup failed:', error);
-    }
-     };
-    
-
-
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -46,14 +10,27 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Signing up with:', email, username); // Logging for demonstration
-        navigate('/');
+        // Construct the user data payload
+        const userData = {
+            email,
+            username,
+            password
+        };
+
+        // Send the user data to the backend
+        try {
+            const response = await axios.post('http://localhost:8082/api/users/register', userData);
+            console.log('Signup successful:', response.data);
+            navigate('/'); // Navigate to home page or dashboard on successful signup
+        } catch (error) {
+            console.error('Failed to sign up:', error.response ? error.response.data : error);
+        }
     };
 
     return (
-        <div className="auth-container"> {/* Make sure this class is applied for container styling */}
+        <div className="auth-container">
             <h2>Signup</h2>
-            <form onSubmit={handleSubmit} className="auth-form"> {/* Apply the auth-form class here */}
+            <form onSubmit={handleSubmit} className="auth-form">
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input 

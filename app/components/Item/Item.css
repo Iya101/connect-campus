@@ -1,179 +1,171 @@
 /* Style for the list item representing a user post */
 .user-post {
-    background-color: #fff; 
-    border: 2px solid #000; 
-    border-radius: 8px;
-    padding: 20px;
-    margin: 15px 0;
-    list-style: none; 
-  }
-  
-  /* Style for the user info section */
-  .user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  
-  /* Style for the user avatar image */
-  .user-avatar {
-    width: 50px; 
-    height: 50px; 
-    border-radius: 50%; 
-    margin-right: 15px;
-  }
-  
-  /* Style for the username */
-  .username {
-    color: #d10000; 
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  /* Style for the post title */
-  .post-title {
-    color: #000; 
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  
-  .post-content {
-    color: #333; 
-    font-size: 16px;
-  }
-  .comment-input, .comment-submit {
-    font-size: 14px; 
-    padding: 8px; 
-    border-radius: 8px; 
-  }
-  .container {
-    display: flex;
-    align-items: center;
-  }
-
-  .button-container {
-    display: flex;
-    
-    flex-direction: column;
-  }
-
-  .edit, .delete {
-    margin-left: 10px;
-  }
-
-  .edit {
-    display: flex;
-    flex-direction: column;
-    color: white;
-  }
-  .delete {
-    background-color: red;
-    border-radius: 4px;
-    color: white;
-  }
-
-  .edit-title, .edit-content, .edit-submit {
-    font-size: 14px; 
-    padding: 8px; 
-    border-radius: 8px; 
-    margin-bottom: 15px;
-  }
-
-  .edit-title {
-    border: 1px solid #ccc; 
-    margin-right: 10px; 
-    width: calc(100% - 120px); 
-    color: black;
-  }
-
-  .edit-content {
-    width: 100%;
-    height: 50%;
-    padding: 10px;
-    margin-bottom: 20px; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  .edit-submit, .edit-button {
-    cursor: pointer;
-    border: 1px solid transparent; 
-    background-color: #ff0000; 
-    color: white;
-    transition: background-color 0.3s ease; 
-  }
-
-  .comment-input {
-    border: 1px solid #ccc; 
-    margin-right: 10px; 
-    width: calc(100% - 120px); 
-    color: black;
-  }
-  
-  .comment-submit {
-    cursor: pointer;
-    border: 1px solid transparent; 
-    background-color: #ff0000; 
-    color: white;
-    transition: background-color 0.3s ease; 
-  }
-  
-  .comment-submit:hover {
-    background-color: #cc0000; 
-  }
-  
-  .comment {
-    color: black;
-  }
-  
-  .login-prompt {
-    color: #ff4500; /* Orangish red color for visibility */
-    font-size: 14px; /* Smaller font size */
-    margin-top: 10px; /* Spacing above the message */
-    text-align: center; /* Center-align the text */
-    padding: 8px;
-    border: 1px solid #ffa07a; /* Light salmon border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #fffaf0; /* Very light off-white background */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  list-style: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-.button-container {
+/* Style for the user info section */
+.user-info {
   display: flex;
-  flex-direction: row;  /* Aligns the children (buttons) horizontally */
-  justify-content: space-between; /* Distributes space between the buttons */
-   /* Space above the button container */
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-/* General styles for buttons within the container */
-.button-container button {
-  cursor: pointer;
-  padding: 8px 12px;
-   /* Space between buttons */
-  color: white;
+/* Style for the user avatar image */
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Style for the username */
+.username {
+  color: #d10000; /* Red color for username */
   font-weight: bold;
-  border: none;
-  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Style for the post title */
+.post-title {
+  color: #000;
+  font-size: 22px; /* Slightly larger font size */
+  margin-bottom: 10px;
+}
+
+.post-content {
+  color: #333; /* Grey color for text */
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Comment Section styling to make comments stand out */
+.comments-section {
+  background-color: #f9f9f9; /* Light grey background for comments */
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.comment {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e0e0e0; /* Light grey background for each comment */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.comment-username {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #000; /* Black color for username in comments */
+}
+
+.comment-content {
+  color: #333; /* Dark grey for comment text */
+}
+
+/* Input and Submit Button styling for comments */
+.comment-input, .comment-submit {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.comment-input {
+  width: calc(100% - 130px); /* Adjusted width for padding */
+  color: #333;
+}
+
+.comment-submit {
+  cursor: pointer;
+  border: 1px solid #ff0000; /* Red border color */
+  background-color: #ff0000; /* Red background color */
+  color: white;
   transition: background-color 0.3s ease;
 }
 
-/* Specific styles for the edit button */
+.comment-submit:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.login-prompt {
+  color: #ff4500; /* Orangish red color for visibility */
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ffa07a; /* Light salmon border */
+  border-radius: 6px;
+  background-color: #fffaf0; /* Very light off-white background */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* Keep as column for vertical alignment */
+  align-items: flex-start; /* Align buttons to the start */
+}
+
+.edit, .delete {
+  margin-left: 10px;
+}
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.delete {
+  background-color: #d9534f; /* Uniform button color for delete */
+  border-radius: 6px;
+  color: white;
+}
+
+.edit-title, .edit-content, .edit-submit {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.edit-title, .edit-content {
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.edit-submit, .edit-button {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: #ff0000; /* Red background color for buttons */
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
 .edit-button {
-  background-color: red;
   margin-left: 5px;
-  margin-right: 5px; /* Green background */
+  margin-right: 5px;
 }
 
 .edit-button:hover {
-  background-color: #d32f2f; /* Darker green on hover */
+  background-color: #cc0000; /* Darker red on hover */
 }
 
-/* Specific styles for the delete button */
 .delete-button {
-  background-color: red /* Red background */
+  background-color: #d9534f;
 }
 
 .delete-button:hover {
-  background-color: #d32f2f; /* Darker red on hover */
+  background-color: #b52f2f; /* Darker red on hover */
 }
+

@@ -7,6 +7,8 @@ const Post = require("../models/Post");
 // Gets all posts from the database
 router.get('/', (req, res) => {
     Post.find()
+    .populate('comments')
+    .exec()
     .then((posts) => res.json(posts))
     .catch((err) => res.status(404).json({ error: 'No posts exist.'}));
 });

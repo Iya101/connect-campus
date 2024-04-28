@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import './Item.css'; 
+import './Item.css';
+import axios from 'axios';
 
-const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete }) => {
+const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comments }) => {
     const [comment, setComment] = useState('');
-    const [comments, setComments] = useState([]);
+    //const [comments, setComments] = useState([]);
     const [avatarUrl, setAvatarUrl] = useState(avatar);
     const [editPost, setEditPost] = useState(null);
     const [postTitle, setPostTitle] = useState(title);
     const [postContent, setPostContent] = useState(content);
+    const [user, setUser] = useState('Default User');
 
     const handleDelete = () => {
         onDelete(id);
@@ -28,7 +30,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
         event.preventDefault();
 
         try {
-            await axios.put('http://localhost:8082/PostRoutes/{postId}');
+            await axios.put('http://localhost:8082/PostRoutes/{id}', {title: postTitle, content: postContent});
             setEditPost(null);
         } catch (err) {
             console.error('Unable to update post.', err);
@@ -39,13 +41,22 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
         setComment(event.target.value);
     };
 
-    const handleCommentSubmit = (event) => {
+    const handleCommentSubmit = async (event) => {
         event.preventDefault();
-        if (comment.trim()) {
-            const newComment = { username: 'Default User', content: comment }; // Replace 'Logged-in User' with actual user data if available
-            setComments(prevComments => [...prevComments, newComment]);
-            setComment('');
+
+        try {
+            if (comment.trim()) {
+                // Adding Comment
+                const response = await axios.post('http://localhost:8082/CommentRoutes/', { postId: id, content: comment });
+                console.log(response.data);
+
+                // Resetting Comment
+                setComment('');
+            }
+        } catch (err) {
+            console.error('Unable to add comment.', err);
         }
+        
     };
 
     const defaultAvatar = 'https://res.cloudinary.com/degakxo0q/image/upload/v1713913695/d7230a1182cd6224fc680eed55cc77c8_kchop5.jpg';
@@ -67,14 +78,14 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, user, onDelete
                 <span className="username">{username}</span>
            
                  </div>
-                {username === 'Default User' && (
+                {user === 'Default User' && (
                     <div className="button-container">
                         <button class="edit-button" onClick={() => handleEdit(id)}>Edit</button>
                         <button class="delete-button" onClick={() => handleDelete(id)}>Delete</button>
                     </div>
                 )}
             </div>
-            {editPost === id && username === 'Default User' ? (
+            {editPost === id && user === 'Default User' ? (
                 <div>
                     <form onSubmit={handleEditSubmit} className="edit">
                         <input 

@@ -34,7 +34,7 @@ const dummyPosts = [
 ];
 
 const Home = ({ isLoggedIn, user }) => {
-  const [posts, setPosts] = useState(dummyPosts);  // Initialize with dummy posts
+  const [posts, setPosts] = useState([]); 
   const [showAddItem, setShowAddItem] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -42,7 +42,7 @@ const Home = ({ isLoggedIn, user }) => {
     const getPosts = async () => {
       try {
         const response = await axios.get('http://localhost:8082/PostRoutes');
-        setPosts(currentPosts => [...dummyPosts, ...response.data]);  // Combine fetched posts with dummy posts
+        setPosts(response.data);
       } catch (err) {
         console.error('Unable to get posts.', err);
       }
@@ -51,22 +51,35 @@ const Home = ({ isLoggedIn, user }) => {
     // Gets new posts every second
     const interval = setInterval(() => {
       getPosts();
-    }, 1000);
+    }, 1000)
 
     return () => clearInterval(interval);
   }, []);
 
+  /*
+  const onAddHandler = (postData) => {
+    const newPost = {
+      ...postData,
+      id: posts.length + 1,
+      avatar: postData.avatar || 'https://default-avatar.png', // Default or use specific avatar if not provided
+      username: 'Default User', // You can adjust this based on actual logged-in user info
+      tags: postData.tags.split(',').map(tag => tag.trim()),
+    };
+    setPosts((prevPosts) => [...prevPosts, newPost]);
+  };
+  */
+
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:8082/PostRoutes/${postId}`);
-      setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+      await axios.delete('http://localhost:8082/PostRoutes/${postId}');
+      setPosts((prevPosts) => prevPosts.filter(post => post.id !== postId));
     } catch (err) {
       console.error('Unable to delete post.', err);
     }
   };
 
   const toggleAddItem = () => {
-    setShowAddItem(prevState => !prevState);
+    setShowAddItem((prevState) => !prevState);
   };
 
   const buttonStyle = {
@@ -93,7 +106,7 @@ const Home = ({ isLoggedIn, user }) => {
           Add New Post
         </button>
       )}
-      {showAddItem && <AddItem onClose={() => setShowAddItem(false)} />}
+      {showAddItem && <AddItem onClose={() => setShowAddItem(false)} />}       {/* removed onAdd={onAddHandler} */}
       <ItemList posts={posts} isLoggedIn={isLoggedIn} user={user} onDelete={handleDelete} />
     </div>
   );
