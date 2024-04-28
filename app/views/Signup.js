@@ -65,6 +65,6 @@ function Signup() {
             </form>
         </div>
     );
-}
 };
+
 export default Signup;

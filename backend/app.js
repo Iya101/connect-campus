@@ -55,9 +55,14 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = express.Router();
+
 const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 app.use(cors());
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
+
 app.use(express.json()); // to parse JSON bodies
 
 // MongoDB connection string
