@@ -4,9 +4,23 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const router = express.Router();
 const userRoutes = require('./routes/userRoutes');
-app.use('/api/users', userRoutes);
-app.use(cors());
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
 app.use(express.json()); // to parse JSON bodies
+app.use('/api/users', userRoutes);
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  })
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
 
 
 

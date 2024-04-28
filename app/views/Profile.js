@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Profile.css';
 
 function Profile({ user, onUpdateUser }) {
@@ -26,29 +27,40 @@ function Profile({ user, onUpdateUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser(editUser);
+    // Example endpoint URL: Adjust to match your server's configuration
+    const endpoint = 'http://localhost:8082/api/users/update-username';
+    
+    axios.post(endpoint, { userId: editUser.userId, newUsername: editUser.username })
+      .then(response => {
+        console.log('Profile updated successfully:', response.data);
+        onUpdateUser({ ...user, username: editUser.username });
+      })
+      .catch(error => {
+        console.error('Failed to update profile:', error);
+      });
+
   };
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Edit Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
+      <form onSubmit={handleSubmit} className="profile-form">
+        <div className="form-group">
+          <label htmlFor="usernameText">Username:</label>
           <input
             type="text"
             name="username"
-            value={editUser.username} // Safely accessing username
+            value={editUser.username}
             onChange={handleChange}
             id="usernameText"
+            className="profile-input"
           />
-        </label>
+        </div>
         {/* Add other fields as necessary */}
-        <button type="submit" id="profileButton">Update Profile</button>
+        <button type="submit" id="profileButton" className="profile-update-button">Update Profile</button>
       </form>
     </div>
   );
 }
 
 export default Profile;
-
