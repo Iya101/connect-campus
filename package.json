@@ -10,12 +10,9 @@
     "app": "nodemon backend/app.js"
   },
   "dependencies": {
-<<<<<<< HEAD
+    "axios": "^1.6.8",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^9.0.2",
-=======
-    "axios": "^1.6.8",
->>>>>>> a42e5aab8b5c43cd7c3034443cf998bf0a840d5d
     "mongodb": "4.1",
     "mongoose": "^8.3.2",
     "next": "^14.1.4",
