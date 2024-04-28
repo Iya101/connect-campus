@@ -1,9 +1,9 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const app = express();
 const router = express.Router();
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/UserRoutes');
 app.use('/api/users', userRoutes);
 app.use(cors());
 app.use(express.json()); // to parse JSON bodies

@@ -1,7 +1,46 @@
-// app/views/Login.js
+
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import UserContext from '../context/UserContext';
+import { useRouter } from 'next/router';
 import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+    const router = useRouter();
+    const { userData, setUserData } = useContext(UserContext);
+   
+    
+
+
+    useEffect(() => {
+        if (userData.token) {
+            router.push('/');
+        }
+    }, [userData.token,router]);
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        setFormData ({
+            ...FormData,
+            [e.target.name]: e.targer.value,
+        });
+        };
+        const handleLogin = async (e) => {
+            e.preventDefault();
+            try {
+                const response = await axios.post('http..localhost:8082/login', formData);
+            setUserData({
+                token: response.data.token,
+                user: responsive.data.user,
+            });
+            localStorage.setItem('auth-token',reaponsive.data.token);
+            router.push('/');
+        } catch (error) {
+            console.error('Login failed:', error);
+        }    
+        };
+        
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -46,5 +85,5 @@ function Login() {
         </div>
     );
 }
-
+};
 export default Login;

@@ -1,5 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../contect/UserContext';
+import axios from 'axios';
+
+const Signup = () => {
+    const { serUserData } = useContext(UserContext);
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault(); 
+        try {
+            await axios.post('http://localhost:8082/login', {
+                email: formData.email,
+                password: formData.password
+            });
+       setUserData({
+        token:loginRes.data.token,
+        user: loginRe.data.user,
+       });
+       localStorage.setItem("auth-token", loginRes.data.token);
+       router.push('/'); // need to add the hompage to dis
+    } catch (error) {
+        console.error('Signup failed:', error);
+    }
+     };
+    
+
+
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -52,5 +89,5 @@ function Signup() {
         </div>
     );
 }
-
+};
 export default Signup;
