@@ -40,3 +40,6 @@ mongoose.connect(conn_str)
     });
     const posts = require('./routes/PostRoutes');
     app.use('/PostRoutes', posts);
+
+    const comments = require('./routes/CommentRoutes');
+    app.use('/CommentRoutes', comments);

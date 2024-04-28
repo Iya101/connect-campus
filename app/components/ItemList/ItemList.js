@@ -6,15 +6,16 @@ const ItemList = ({ posts, isLoggedIn, user, onDelete }) => {
         <ul className="posts">
             {posts.map((post) => (
                 <Item
-                    key={post.id}
-                    id={post.id}
+                    key={post._id}
+                    id={post._id}
                     avatar={post.avatar}
                     username={post.username}
                     title={post.title}
                     content={post.content}
                     isLoggedIn={isLoggedIn}
                     user={user} 
-                    onDelete={onDelete}// Ensure this prop is passed correctly
+                    onDelete={onDelete}
+                    comments={post.comments}
                 />
             ))}
         </ul>
