@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
@@ -9,14 +10,27 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Signing up with:', email, username); // Logging for demonstration
-        navigate('/');
+        // Construct the user data payload
+        const userData = {
+            email,
+            username,
+            password
+        };
+
+        // Send the user data to the backend
+        try {
+            const response = await axios.post('http://localhost:8082/api/users/register', userData);
+            console.log('Signup successful:', response.data);
+            navigate('/'); // Navigate to home page or dashboard on successful signup
+        } catch (error) {
+            console.error('Failed to sign up:', error.response ? error.response.data : error);
+        }
     };
 
     return (
-        <div className="auth-container"> {/* Make sure this class is applied for container styling */}
+        <div className="auth-container">
             <h2>Signup</h2>
-            <form onSubmit={handleSubmit} className="auth-form"> {/* Apply the auth-form class here */}
+            <form onSubmit={handleSubmit} className="auth-form">
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input 
@@ -52,5 +66,5 @@ function Signup() {
         </div>
     );
 }
-
+};
 export default Signup;
