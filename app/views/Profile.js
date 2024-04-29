@@ -43,7 +43,7 @@ function Profile({ user, onUpdateUser }) {
 
   return (
     <div className="profile-container">
-      <h2>Edit Profile</h2>
+      <h2 id="profileLabel">Edit Profile</h2>
       <form onSubmit={handleSubmit} className="profile-form">
         <div className="form-group">
           <label htmlFor="usernameText">Username:</label>
