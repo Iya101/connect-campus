@@ -112,49 +112,22 @@
 
 .button-container {
   display: flex;
-  flex-direction: column; /* Keep as column for vertical alignment */
+  flex-direction:row; /* Keep as column for vertical alignment */
   align-items: flex-start; /* Align buttons to the start */
 }
 
-.edit, .delete {
-  margin-left: 10px;
-}
 
-.edit {
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
 
-.delete {
-  background-color: #d9534f; /* Uniform button color for delete */
-  border-radius: 6px;
-  color: white;
-}
 
-.edit-title, .edit-content, .edit-submit {
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
 
-.edit-title, .edit-content {
-  border: 1px solid #ccc;
-  color: #333;
-}
 
-.edit-submit, .edit-button {
-  cursor: pointer;
-  border: 1px solid transparent;
-  background-color: #ff0000; /* Red background color for buttons */
-  color: white;
-  transition: background-color 0.3s ease;
-}
 
 .edit-button {
   margin-left: 5px;
   margin-right: 5px;
+  background-color: red; /* Uniform button color for delete */
+  border-radius: 5px;
+  color: white;
 }
 
 .edit-button:hover {
@@ -162,7 +135,11 @@
 }
 
 .delete-button {
-  background-color: #d9534f;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: red; 
+  border-radius: 5px;
+  color: white;
 }
 
 .delete-button:hover {
