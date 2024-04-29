@@ -170,3 +170,26 @@
   background-color: #b52f2f; /* Darker red on hover */
 }
 
+.like-button {
+  margin-left: auto;
+  border: none;
+  background: none; 
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.like-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.like-icon.logged-in:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease; 
+}
+
+.likes-counter {
+  color: black;
+  margin-left: 10px;
+}

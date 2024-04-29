@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AddItem from '../components/AddItem/AddItem';
 import ItemList from '../components/ItemList/ItemList';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 const dummyPosts = [
   {
@@ -37,6 +39,7 @@ const Home = ({ isLoggedIn, user }) => {
   const [posts, setPosts] = useState([]); 
   const [showAddItem, setShowAddItem] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const getPosts = async () => {
@@ -44,6 +47,7 @@ const Home = ({ isLoggedIn, user }) => {
         const response = await axios.get('http://localhost:8082/PostRoutes');
         setPosts(response.data);
       } catch (err) {
+        navigate('/error');
         console.error('Unable to get posts.', err);
       }
     };
@@ -74,6 +78,7 @@ const Home = ({ isLoggedIn, user }) => {
       await axios.delete(`http://localhost:8082/PostRoutes/${postId}`);
       setPosts((prevPosts) => prevPosts.filter(post => post._id !== postId));
     } catch (err) {
+      navigate('/error');
       console.error('Unable to delete post.', err);
     }
   };

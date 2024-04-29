@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Item.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comments }) => {
+const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comments, likes }) => {
     const [comment, setComment] = useState('');
     //const [comments, setComments] = useState([]);
     const [avatarUrl, setAvatarUrl] = useState(avatar);
     const [editPost, setEditPost] = useState(null);
     const [postTitle, setPostTitle] = useState(title);
     const [postContent, setPostContent] = useState(content);
-    const [user, setUser] = useState('Default User');
+    const [user, setUser] = useState('662ec566ffe66c0170543524'); // Update with the user information, added this for testing
+    const [isLiked, setIsLiked] = useState(false); // added isLiked, remove this if unable to fix the icon update
+    const navigate = useNavigate(); // added useNavigate
+
+    useEffect(() => {
+        setIsLiked(likes.includes(user));
+    },[likes])
 
     const handleDelete = () => {
         onDelete(id);
@@ -33,6 +40,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comm
             await axios.put(`http://localhost:8082/PostRoutes/${id}`, {title: postTitle, content: postContent});
             setEditPost(null);
         } catch (err) {
+            navigate('/error');
             console.error('Unable to update post.', err);
         }
     };
@@ -54,17 +62,39 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comm
                 setComment('');
             }
         } catch (err) {
+            navigate('/error');
             console.error('Unable to add comment.', err);
         }
-        
     };
+        const handleLike = async () => {
+            try {
+                const response = await axios.put(`http://localhost:8082/PostRoutes/${id}/like`, { userId: user })
+                console.log(response.data);
+            } catch (err) {
+                console.error('Unable to update likes or dislikes.', err);
+                navigate('/error');
+            }
+        }
+        
+    
 
     const defaultAvatar = 'https://res.cloudinary.com/degakxo0q/image/upload/v1713913695/d7230a1182cd6224fc680eed55cc77c8_kchop5.jpg';
       
     const handleAvatarError = () => {
         setAvatarUrl(defaultAvatar);
     };
-
+    const renderLikeButton = () => {
+        const likeIcon = "https://freerangestock.com/sample/118382/heart-icon-vector.jpg";
+        // remove likedIcon if unable to fix update icon
+        const likedIcon = "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA1L2pvYjk2My1iLTExMy1saGVrZHJoZi5qcGc.jpg"; 
+        return (
+            <button onClick={isLoggedIn ? handleLike : null} className="like-button" disabled={!isLoggedIn}>
+                {/* Remove the { isLiked ? likedIcon : likeIcon } to likeIcon src if unable to fix update icon */}
+                <img src={ isLiked ? likedIcon : likeIcon } alt="Like Icon" className={`like-icon ${isLoggedIn ? 'logged-in' : ''}`} /> 
+                <span className="likes-counter">{likes.length}</span>
+            </button>
+        );
+    };
     return (
         <li className="user-post">
             <div className="user-info">
@@ -84,6 +114,7 @@ const Item = ({ id, avatar, username, title, content, isLoggedIn, onDelete, comm
                         <button class="delete-button" onClick={() => handleDelete(id)}>Delete</button>
                     </div>
                 )}
+                {renderLikeButton()} 
             </div>
             {editPost === id && user === 'Default User' ? (
                 <div>

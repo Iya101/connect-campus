@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './views/Home';
 import Auth from './views/Auth';
+import Error from './views/Error';
 import AddItem from './components/AddItem/AddItem';
 import Profile from './views/Profile';
 
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home isLoggedIn={isLoggedIn} user={user} />} />
           <Route path="/auth" element={ <Auth onLogin={handleLogin} username={username} setUsername={setUsername} />} />
+          <Route path="/error" element={<Error></Error>} />
           {isLoggedIn && (
             <>
               <Route path="/profile" element={<Profile user={user} onUpdateUser={setUser} />} />

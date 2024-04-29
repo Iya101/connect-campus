@@ -47,6 +47,28 @@ router.put('/:id', (req, res) => {
         })
         .catch((err) => res.status(400).json({ error: 'Unable to update the post.', err }));
 });
+router.put('/:id/like', async (req, res) => {
+    const postId = req.params.id;
+    const userId = req.body.userId;
+
+    try {
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found.' });
+        }
+
+        if (post.likes.includes(userId)) {
+            // Removes the like
+            await Post.findByIdAndUpdate(postId, { $pull: { likes: userId }}, { new: true });
+        } else {
+            // Likes the post
+            await Post.findByIdAndUpdate(postId, { $push: { likes: userId }}, { new: true });
+        }
+        res.json({ msg: 'Likes updated', post});
+    } catch (err) {
+        console.error('Unable to update likes.', err);
+    }
+});
 // Deletes a post in the database
 router.delete('/:id', (req, res) => {
     Post.findByIdAndDelete(req.params.id)

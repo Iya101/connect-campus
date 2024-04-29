@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './AddItem.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const AddItem = ({ onClose, user }) => { {/* removed onAdd */}
+const AddItem = ({ onClose, user }) => { 
+    const navigate = useNavigate();
     const [postData, setPostData] = useState({
         title: '',
         content: '',

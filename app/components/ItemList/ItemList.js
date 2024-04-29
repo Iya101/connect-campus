@@ -16,6 +16,7 @@ const ItemList = ({ posts, isLoggedIn, user, onDelete }) => {
                     user={user} 
                     onDelete={onDelete}
                     comments={post.comments}
+                    likes={post.likes}
                 />
             ))}
         </ul>
